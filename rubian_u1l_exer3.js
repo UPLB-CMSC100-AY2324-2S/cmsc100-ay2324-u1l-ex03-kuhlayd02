@@ -1,13 +1,13 @@
 
-const password1 = "pass1234";
-const password2 = "pass1234";
-const name = "Clyde";
+const password1 = "Pass1234";
+const password2 = "Pass1234";
+const Username = "Clyde";
 
-function validation (password1, password2, name) {
+function validation (password1, password2, Username) {
     if (password1.length >= 8 && password2.length >= 8) {
       if (password1 == password2) {
         if ((/[A-Z]/.test(password1) && /[0-9]/.test(password1)) && (/[A-Z]/.test(password2) && /[0-9]/.test(password2))) {
-          return reversePass(name, password1)
+          return reversePass(Username, password1);
         } else {
           return console.log("Inavalid Password!");
         }
@@ -20,11 +20,25 @@ function validation (password1, password2, name) {
   }
 
 
-function reversePass(name, password1) {
+function reversePass(Username, password1) {
     const strReverse = [...password1].reduce((x,y) => y.concat(x));
-    console.log("{name" + name + "," + "new password:" + strReverse + "}");
+    console.log(`{name: "${Username}", new password:"${strReverse}"}`);
 
 }
 
 
-validation(password1, password2);
+function passStorage (Username, password1, password2) {
+   
+    if (validation(password1, password2, Username)) {
+        console.log(`storePassword("${Username}", "${password1}", "${password2}")`);
+        return {
+            name: Username,
+            newpassword: reversePass(Username, password1)
+        };
+    } else {
+        console.log(`storePassword("${Username}", "${password1}", "${password2}")`);
+        return "Wrong Password!";
+    }
+}
+
+passStorage(Username, password1, password2);
