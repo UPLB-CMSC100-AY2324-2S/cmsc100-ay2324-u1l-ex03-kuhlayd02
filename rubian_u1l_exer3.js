@@ -1,6 +1,6 @@
 
-const password1 = "i<3cmsc";
-const password2 = "i<3cmsc100";
+const password1 = "Pass1234";
+const password2 = "Pass1234";
 const Username = "Clyde";
 
 function validation (password1, password2, Username) {
